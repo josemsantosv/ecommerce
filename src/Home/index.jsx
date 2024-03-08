@@ -8,31 +8,21 @@ function Home() {
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
-        return (
-          context.filteredItems?.map(item => (
-            <Card key={item.id} data={item} />
-          ))
-        )
-      } else {
-        return (
-          <div className='col-span-4 flex justify-center'>
-            <p>We don't have anything :(</p>
-          </div>
-        )
-      }
-    } else {
+    if (context.filteredItems?.length > 0) {
       return (
-        context.items?.map(item => (
+        context.filteredItems?.map(item => (
           <Card key={item.id} data={item} />
         ))
+      )
+    } else {
+      return (
+        <div>We don't have anything :(</div>
       )
     }
   }
 
   return (
-    <>
+  
      <Layout>
      <div className='flex items-center justify-center relative w-80 mb-4'>
         <h1 className='font-medium text-xl'>Exclusive Products</h1>
@@ -48,7 +38,7 @@ function Home() {
       <ProductDetail/>
      </Layout>
  
-    </>
+    
   )
 }
 
