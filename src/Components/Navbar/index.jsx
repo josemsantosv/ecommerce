@@ -155,7 +155,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to='/sing-in'
+            to='/sign-in'
             onClick={() => handleSignOut()}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
