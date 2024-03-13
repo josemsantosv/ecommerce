@@ -1,6 +1,19 @@
+import { useContext } from "react"
 import Layout from "../Components/Layout"
 import { Link } from 'react-router-dom'
+import { ShoppingCartContext } from "../Context"
+
 function SignIn() {
+  const context = useContext(ShoppingCartContext)
+
+  // Account
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
+  const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
+
   return (
     <Layout>
     SignIn
